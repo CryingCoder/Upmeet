@@ -1,0 +1,66 @@
+.homeSplash{
+    background-image: url("/assets/header.jpg");
+    height: 300px;
+    margin-bottom: 8px;
+
+}
+.homeSplash > h1 {
+    text-align: center;
+    padding-top: 5%;
+    margin-top: auto;
+    color: #36ecff;
+    height: 96%;
+    font-size: 72px;
+    font-weight: 600;
+    text-shadow: 3px 3px black;
+  }
+
+.eventCard{
+    display: flex;
+}
+.eventCardTitle {
+    font-size: 20px;
+    font-weight: bold;
+}
+.eventCard > img {
+    padding: 6px;
+}
+
+.nav-item input {
+    width: 180px;
+}
+.nav-item button {
+    width: 70px;
+}
+.nav-item button::after {
+    content:"!";
+}
+
+@media (min-width: 576px){
+    .nav-item input {
+        width: 52px;
+    }
+    .nav-item button {
+        width: 28px;
+    }
+}
+@media (min-width: 768px){
+    .nav-item input {
+        width: 80px;
+    }
+    .nav-item button {
+        width: 70px;
+    }
+    .nav-item button::after {
+        content:"earch!";
+    }
+}
+
+@media (min-width: 992px){
+    .nav-item input {
+        width: 120px;
+    }
+    .nav-item button {
+        width: 70px;
+    }
+}
