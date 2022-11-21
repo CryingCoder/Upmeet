@@ -231,5 +231,4 @@ _Pvt_Extensions
 .fake/
 
 # ANGULAR - RYAN
-*.pack
-
+**/.angular/cache
