@@ -23,20 +23,15 @@ export class DALService {
   }
 
   //favoriting events
-  isFavByUser(id:number, user:number):boolean{
-    let favData:Fav;
-    this.http.get<Fav>(this.baseUrl+`api/EventFav/${id}`).subscribe((results:Fav)=> {
-      favData = results;
-    });
-    if (favData! && favData.userID === user){
-      return true;
-    }else{
-      return false;
+  isFavByUser(id:number, user:number):Observable<Fav[]>{
+    let output:boolean = false;
+    return this.http.get<Fav[]>(this.baseUrl+`api/FavEvents/${id}/${user}`)
     }
-  }
+    
   makeFavorite(id:number, user:number):Observable<Fav>{
-    let newFav:Fav = {eventID: id, userID: user};
-    return this.http.post<Fav>(this.baseUrl+`api/EventFav`, newFav);
+    let newFav:Fav = {eventId: id, userId: user};
+    let hasFavorited:boolean = false;
+    return this.http.post<Fav>(this.baseUrl+`api/FavEvents`, newFav);
   }
 
   // searching events

@@ -30,18 +30,19 @@ export class EventComponent implements OnInit {
    ngOnInit(): void {
     this.eventDB.GetCertainEvent(this.cEventID).subscribe((results:Evnt)=> {
       this.currentEvent = results;
-    });
-
-    if (this.eventDB.isFavByUser(this.currentEvent.id, this.loggedIn)){
-      this.favUpdate();
-    }
-  }
+      this.eventDB.isFavByUser(this.currentEvent.id, this.loggedIn).subscribe((results)=> {
+        if(results[0].userId == this.loggedIn){
+          this.favUpdate();
+        }   
+        });
+      });
+   }
   
   
   favorite(eventID:number, user:number):void{
     this.eventDB.makeFavorite(eventID, user)
     .subscribe(result => {
-      if(result.userID == this.loggedIn){
+      if(result.userId === this.loggedIn){
         this.favUpdate();
       }else{
         alert("error!");
@@ -50,7 +51,7 @@ export class EventComponent implements OnInit {
   }
 
   favUpdate(){
-    document.getElementById('star')!.style.color = `yellow`;
+    document.getElementById('star')!.style.color = `gold`;
   }
 
 

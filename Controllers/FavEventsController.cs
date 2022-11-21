@@ -28,17 +28,19 @@ namespace Upmeet.Controllers
         }
 
         // GET: api/FavEvents/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<FavEvent>> GetFavEvent(int id)
+        [HttpGet("{id}/{user}")]
+        public async Task<IEnumerable<FavEvent>> GetFavEvent(int id,int user)
         {
-            var favEvent = await _context.FavEvents.FindAsync(id);
+            var favEvent =  await _context.FavEvents.ToListAsync();
+            var newFav = favEvent.Where(x => x.EventId == id && x.UserId == user);
 
             if (favEvent == null)
             {
-                return NotFound();
+                return (IEnumerable<FavEvent>)NotFound();
+
             }
 
-            return favEvent;
+            return newFav;
         }
 
         // PUT: api/FavEvents/5
