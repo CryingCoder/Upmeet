@@ -35,7 +35,10 @@
 .nav-item button::after {
     content:"!";
 }
-
+#star {
+    background: none;
+    border: 0px;
+}
 @media (min-width: 576px){
     .nav-item input {
         width: 52px;

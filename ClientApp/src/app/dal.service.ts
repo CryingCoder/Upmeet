@@ -35,7 +35,7 @@ export class DALService {
     }
   }
   makeFavorite(id:number, user:number):Observable<Fav>{
-    let newFav:Fav = {eventID: id, fav: true, userID: user};
+    let newFav:Fav = {eventID: id, userID: user};
     return this.http.post<Fav>(this.baseUrl+`api/EventFav`, newFav);
   }
 

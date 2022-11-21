@@ -26,4 +26,6 @@ public partial class Event
     public DateTime? DateTime { get; set; }
 
     public int? AvailableTickets { get; set; }
+
+    public virtual ICollection<FavEvent> FavEvents { get; } = new List<FavEvent>();
 }

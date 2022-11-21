@@ -14,15 +14,19 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 export class EventComponent implements OnInit {
   cEventID:number = -1;
   private routeSub: Subscription;
-  loggedIn:number = 17;
+  loggedIn:number = -1;
   faStar = faStar;
 
   constructor(private eventDB:DALService, public fmtr:FormatterService, private route: ActivatedRoute) {
     this.routeSub = route.params.subscribe(params => {
       this.cEventID = params['id'];
     });
-   }
+    //this.loggedIn = currentUser;
+  }
+
+
    currentEvent:Evnt = {} as Evnt;
+   
    ngOnInit(): void {
     this.eventDB.GetCertainEvent(this.cEventID).subscribe((results:Evnt)=> {
       this.currentEvent = results;
@@ -37,7 +41,7 @@ export class EventComponent implements OnInit {
   favorite(eventID:number, user:number):void{
     this.eventDB.makeFavorite(eventID, user)
     .subscribe(result => {
-      if(result.fav == true){
+      if(result.userID == this.loggedIn){
         this.favUpdate();
       }else{
         alert("error!");

@@ -5,14 +5,14 @@
 <div class="container">
     <div class="row">
         <div class="col-md-7">
-            <h2>swag <button (click)="favorite(currentEvent.id, loggedIn)" id="star" [routerLink]=""><fa-icon [icon]="faStar"></fa-icon></button></h2>
+            <h2>{{currentEvent.name}} <button (click)="favorite(currentEvent.id, loggedIn)" id="star" [routerLink]=""><fa-icon [icon]="faStar"></fa-icon></button></h2>
             <hr>
             <div class="row">
                 <div class="col-md-6">
                     <p>{{currentEvent.description}}</p>
                 </div>
                 <div class="col-md-6">
-                    <img src=".../assets/{{currentEvent.description}}.jpg">
+                    <img src=".../assets/{{currentEvent.id}}.jpg">
                 </div>
             </div>
             

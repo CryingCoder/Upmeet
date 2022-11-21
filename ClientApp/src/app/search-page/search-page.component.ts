@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DALService } from '../dal.service';
 import { Evnt } from '../evnt';
 import { FormatterService } from '../formatter.service';
+import {RouterModule} from '@angular/router';
 
 @Component({
   selector: 'app-search-page',

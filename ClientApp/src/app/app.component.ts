@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -6,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  currentUser:number = -1;
+  constructor(private user: UserService) {
+    this.currentUser = parseInt(user.getData("user")!);
+  }
 }

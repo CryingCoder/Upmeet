@@ -1,5 +1,5 @@
 export interface Fav {
     eventID:number;
-    fav:boolean;
+    //fav:boolean;
     userID:number;
 }
