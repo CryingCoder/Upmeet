@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { catchError, Subscription } from 'rxjs';
 import { formatDate } from '@angular/common';
 import { FormatterService } from '../formatter.service';
-
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-event',
   templateUrl: './event.component.html',
@@ -15,7 +15,7 @@ export class EventComponent implements OnInit {
   cEventID:number = -1;
   private routeSub: Subscription;
   loggedIn:number = 17;
-
+  faStar = faStar;
 
   constructor(private eventDB:DALService, public fmtr:FormatterService, private route: ActivatedRoute) {
     this.routeSub = route.params.subscribe(params => {

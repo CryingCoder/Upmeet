@@ -14,6 +14,7 @@ import { LocationComponent } from './location/location.component';
 import { SearchComponent } from './search/search.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { FormatterService } from './formatter.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { FormatterService } from './formatter.service';
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'event/:id', component: EventComponent },
       { path: 'location/:state/:city', component: LocationComponent },
-    ])
+    ]),
+    FontAwesomeModule
   ],
   providers: [
     FormatterService,
