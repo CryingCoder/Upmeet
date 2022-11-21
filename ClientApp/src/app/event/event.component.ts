@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, LOCALE_ID, OnInit } from '@angular/core';
+import { DALService } from '../dal.service';
+import { Evnt } from '../evnt';
+import { ActivatedRoute } from '@angular/router';
+import { catchError, Subscription } from 'rxjs';
+import { formatDate } from '@angular/common';
+import { FormatterService } from '../formatter.service';
 
 @Component({
   selector: 'app-event',
@@ -6,10 +12,47 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./event.component.css']
 })
 export class EventComponent implements OnInit {
+  cEventID:number = -1;
+  private routeSub: Subscription;
+  loggedIn:number = 17;
 
-  constructor() { }
 
-  ngOnInit(): void {
+  constructor(private eventDB:DALService, public fmtr:FormatterService, private route: ActivatedRoute) {
+    this.routeSub = route.params.subscribe(params => {
+      this.cEventID = params['id'];
+    });
+   }
+   currentEvent:Evnt = {} as Evnt;
+   ngOnInit(): void {
+    this.eventDB.GetCertainEvent(this.cEventID).subscribe((results:Evnt)=> {
+      this.currentEvent = results;
+    });
+
+    if (this.eventDB.isFavByUser(this.currentEvent.id, this.loggedIn)){
+      this.favUpdate();
+    }
+  }
+  
+  
+  favorite(eventID:number, user:number):void{
+    this.eventDB.makeFavorite(eventID, user)
+    .subscribe(result => {
+      if(result.fav == true){
+        this.favUpdate();
+      }else{
+        alert("error!");
+      }
+    });
+  }
+
+  favUpdate(){
+    document.getElementById('star')!.style.color = `yellow`;
+  }
+
+
+
+  ngOnDestroy() {
+    this.routeSub.unsubscribe();
   }
 
 }

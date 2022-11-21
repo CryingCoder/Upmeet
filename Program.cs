@@ -12,8 +12,9 @@ namespace Upmeet
 
 			builder.Services.AddControllersWithViews();
 
-			var app = builder.Build();
 			builder.Services.AddDbContext<EventsDbContext>();
+
+			var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
 			if (!app.Environment.IsDevelopment())

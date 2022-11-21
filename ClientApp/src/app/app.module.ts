@@ -13,6 +13,7 @@ import { EventComponent } from './event/event.component';
 import { LocationComponent } from './location/location.component';
 import { SearchComponent } from './search/search.component';
 import { SearchPageComponent } from './search-page/search-page.component';
+import { FormatterService } from './formatter.service';
 
 @NgModule({
   declarations: [
@@ -34,9 +35,13 @@ import { SearchPageComponent } from './search-page/search-page.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'event/:id', component: EventComponent },
+      { path: 'location/:state/:city', component: LocationComponent },
     ])
   ],
-  providers: [],
+  providers: [
+    FormatterService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

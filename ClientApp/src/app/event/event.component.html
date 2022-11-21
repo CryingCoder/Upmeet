@@ -1,1 +1,38 @@
-<p>event works!</p>
+<div class="homeSplash">
+	<h1>{{currentEvent.name}} @ {{currentEvent.city}}</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <h2>swag <button (click)="favorite(currentEvent.id, loggedIn)" id="star" [routerLink]="">stared</button></h2>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>{{currentEvent.description}}</p>
+                </div>
+                <div class="col-md-6">
+                    <img src=".../assets/{{currentEvent.description}}.jpg">
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-md-5">
+            <h2>Details</h2>
+            <hr>
+            <!-- map here -->
+            <ul>
+                <li>{{currentEvent.address}} {{currentEvent.city}}, {{currentEvent.state}}</li>
+                <li>Date: {{fmtr.dateFormatter(currentEvent.dateTime)}}</li>
+                <li>Time: {{fmtr.timeFormatter(currentEvent.dateTime)}}</li>
+                <div *ngIf="currentEvent.ticketPrice!=0; else elseBlock">
+                    <li>${{currentEvent.ticketPrice}}</li>
+                </div>
+                <ng-template #elseBlock>
+                    <li>Free event!</li>
+                </ng-template>
+                <li>Host: <a>{{currentEvent.hostedBy}}</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

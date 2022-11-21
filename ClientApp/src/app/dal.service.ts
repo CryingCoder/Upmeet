@@ -1,9 +1,50 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, ErrorHandler } from '@angular/core';
+import { Evnt } from './evnt';
+import { HttpClient } from '@angular/common/http';
+import { catchError, Observable, throwError,  } from 'rxjs';
+import { inject } from '@angular/core/testing';
+import { Fav } from './fav';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DALService {
+  baseUrl:string = "";
+  constructor(private http:HttpClient, @Inject("BASE_URL") private url:string) { 
+    this.baseUrl = url;
+  }
+  // Getting events
+  GetEvnts():Observable<Evnt[]>{
+    return this.http.get<Evnt[]>(this.baseUrl+"api/Events");
+  }
 
-  constructor() { }
+  GetCertainEvent(id:number):Observable<Evnt>{
+    return this.http.get<Evnt>(this.baseUrl+`api/Events/${id}`);
+  }
+
+  //favoriting events
+  isFavByUser(id:number, user:number):boolean{
+    let favData:Fav;
+    this.http.get<Fav>(this.baseUrl+`api/EventFav/${id}`).subscribe((results:Fav)=> {
+      favData = results;
+    });
+    if (favData! && favData.userID === user){
+      return true;
+    }else{
+      return false;
+    }
+  }
+  makeFavorite(id:number, user:number):Observable<Fav>{
+    let newFav:Fav = {eventID: id, fav: true, userID: user};
+    return this.http.post<Fav>(this.baseUrl+`api/EventFav`, newFav);
+  }
+
+  // searching events
+  search(search:string):Observable<Evnt[]>{
+    return this.http.get<Evnt[]>(this.baseUrl+`api/EventSearch/${search}`);
+  }
+  searchSpec(search:string, type:string){
+
+  }
+
 }
