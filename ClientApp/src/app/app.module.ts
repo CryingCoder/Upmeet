@@ -16,6 +16,7 @@ import { FormatterService } from './formatter.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AddEventComponent } from './add-event/add-event.component';
 import { UserDropdownComponent } from './user-dropdown/user-dropdown.component';
+import { MyFavsComponent } from './my-favs/my-favs.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { UserDropdownComponent } from './user-dropdown/user-dropdown.component';
     SearchPageComponent,
     UserDropdownComponent,
     AddEventComponent,
+    MyFavsComponent
     
   ],
   imports: [
@@ -43,6 +45,7 @@ import { UserDropdownComponent } from './user-dropdown/user-dropdown.component';
       { path: 'location/:state/:city', component: LocationComponent },
       { path: 'search-page/:searchString', component: SearchPageComponent },
       { path: 'search-page/:favoritesOf', component: SearchPageComponent },
+      { path: 'my-favs', component: MyFavsComponent },
     ]),
     FontAwesomeModule
   ],

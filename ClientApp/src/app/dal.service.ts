@@ -39,8 +39,10 @@ export class DALService {
     return this.http.post<Fav>(this.baseUrl+`api/FavEvents`, newFav);
   }
 
-  //
-
+  //Getting Favorited Events
+  GetFavEvnts():Observable<Fav[]>{
+    return this.http.get<Fav[]>(this.baseUrl+"api/FavEvents");
+  }
 
   // searching events
   search(search:string):Observable<Evnt[]>{

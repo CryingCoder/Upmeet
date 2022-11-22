@@ -1,0 +1,26 @@
+<div class="container">
+    <app-search class="onSearchPage"></app-search>
+    <h1>Searching for my favs!</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <div *ngFor="let e of resultList">
+                    <div class="eventCard">
+                        <img src="https://joynight.com/wp-content/uploads/2013/03/leland-detroit1.jpg" width="150">
+                        <div class="eventContents"> 
+                            <span style="display:flex">
+                                <a [routerLink]="['event',e.id]" class="eventCardTitle">{{e.name}}</a>
+                                <p class="divider">&nbsp;|&nbsp;</p>
+                                <a [routerLink]="['location', e.state, e.city]"> {{e.city}}, {{e.state}}</a>
+                            </span>
+                            <br>
+                            <span>
+                                <p>{{e.type}} Event by {{e.hostedBy}} on {{fmtr.dateFormatter(e.dateTime)}}</p>
+                            </span>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    
+    </div>
