@@ -4,6 +4,8 @@ import { DALService } from '../dal.service';
 import { Evnt } from '../evnt';
 import { FormatterService } from '../formatter.service';
 
+import { faSpaghettiMonsterFlying  } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,11 +13,10 @@ import { FormatterService } from '../formatter.service';
 export class HomeComponent {
 
   workingList:Evnt[] =[];
-
+  faSpaghettiMonsterFlying = faSpaghettiMonsterFlying;
   constructor(private eventDB:DALService, public fmtr:FormatterService) {
     this.eventDB.GetEvnts().subscribe((results:Evnt[])=> {
       this.workingList = results;
-      console.log(this.workingList);
     });
    }
 

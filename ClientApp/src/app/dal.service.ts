@@ -30,9 +30,13 @@ export class DALService {
     
   makeFavorite(id:number, user:number):Observable<Fav>{
     let newFav:Fav = {eventId: id, userId: user};
+    // see if its fav'd aleady
     let hasFavorited:boolean = false;
     return this.http.post<Fav>(this.baseUrl+`api/FavEvents`, newFav);
   }
+
+  //
+
 
   // searching events
   search(search:string):Observable<Evnt[]>{
@@ -41,5 +45,7 @@ export class DALService {
   searchSpec(search:string, type:string){
 
   }
+
+  //
 
 }

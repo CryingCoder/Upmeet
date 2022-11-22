@@ -3,9 +3,8 @@ import { DALService } from '../dal.service';
 import { Evnt } from '../evnt';
 import { ActivatedRoute } from '@angular/router';
 import { catchError, Subscription } from 'rxjs';
-import { formatDate } from '@angular/common';
 import { FormatterService } from '../formatter.service';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar  } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-event',
   templateUrl: './event.component.html',
@@ -25,7 +24,7 @@ export class EventComponent implements OnInit {
   }
 
 
-   currentEvent:Evnt = {} as Evnt;
+  currentEvent:Evnt = {} as Evnt;
    
    ngOnInit(): void {
     this.eventDB.GetCertainEvent(this.cEventID).subscribe((results:Evnt)=> {
@@ -36,8 +35,10 @@ export class EventComponent implements OnInit {
         }   
         });
       });
+      let header:HTMLElement  =  document.getElementById(`HSE`)!;
+    let dynamicCss:string = `url('/assets/${this.currentEvent.id}.jpg') !important`;
+    header.style.backgroundImage = dynamicCss;
    }
-  
   
   favorite(eventID:number, user:number):void{
     this.eventDB.makeFavorite(eventID, user)
@@ -54,7 +55,9 @@ export class EventComponent implements OnInit {
     document.getElementById('star')!.style.color = `gold`;
   }
 
-
+  map(){
+    // AIzaSyBlXBExq16HtjE2x19HgnVJS6fUqlNpOt0
+  }
 
   ngOnDestroy() {
     this.routeSub.unsubscribe();

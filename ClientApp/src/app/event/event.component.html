@@ -1,4 +1,4 @@
-<div class="homeSplash">
+<div class="homeSplash" id="HSE">
 	<h1>{{currentEvent.name}} @ {{currentEvent.city}}</h1>
 </div>
 
@@ -8,11 +8,10 @@
             <h2>{{currentEvent.name}} <button (click)="favorite(currentEvent.id, loggedIn)" id="star" [routerLink]=""><fa-icon [icon]="faStar"></fa-icon></button></h2>
             <hr>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <p>{{currentEvent.description}}</p>
-                </div>
-                <div class="col-md-6">
-                    <img src=".../assets/{{currentEvent.id}}.jpg">
+                    <img src="/assets/{{currentEvent.id}}.jpg" width="100%">
+                    
                 </div>
             </div>
             

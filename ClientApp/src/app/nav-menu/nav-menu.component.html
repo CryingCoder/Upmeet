@@ -28,13 +28,13 @@
             <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/counter']">Counter</a>
+            <a class="nav-link text-dark" [routerLink]="['/add-event']">Add Event</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/fetch-data']">Fetch data</a>
+            <a class="nav-link text-dark" [routerLink]="['search-page/:favoritesOf']">My Favs</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/fetch-data']">Spec. Search</a>
+            <a class="nav-link text-dark" [routerLink]="['/search-page']">Spec. Search</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <app-search></app-search>

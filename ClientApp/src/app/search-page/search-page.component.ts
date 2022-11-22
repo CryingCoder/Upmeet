@@ -12,8 +12,9 @@ import {RouterModule} from '@angular/router';
 export class SearchPageComponent implements OnInit {
 
   constructor(public fmtr:FormatterService, private eventDB:DALService) { }
-
+  searchString:string = "";
   resultList:Evnt[] = [];
+
   ngOnInit(): void {
     
 

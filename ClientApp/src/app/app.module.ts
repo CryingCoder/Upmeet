@@ -14,6 +14,7 @@ import { SearchComponent } from './search/search.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { FormatterService } from './formatter.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AddEventComponent } from './add-event/add-event.component';
 
 @NgModule({
   declarations: [
@@ -32,9 +33,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'add-event', component: AddEventComponent },
       { path: 'event/:id', component: EventComponent },
+      { path: 'location/:state/', component: LocationComponent },
       { path: 'location/:state/:city', component: LocationComponent },
+      { path: 'search-page/:searchString', component: SearchPageComponent },
+      { path: 'search-page/:favoritesOf', component: SearchPageComponent },
     ]),
     FontAwesomeModule
   ],

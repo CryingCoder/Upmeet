@@ -67,3 +67,14 @@
         width: 70px;
     }
 }
+
+
+.onSearchPage > input::after {
+    content:"earch!";
+    width:80%;
+}
+
+footer {
+    padding: 20px 6px 6px 0px;
+    text-align: right;
+}
