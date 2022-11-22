@@ -1,25 +1,51 @@
+<div class="container addForm">
 <h2>Add New Event to the Event List!</h2>
-
-
-    <p>Name</p>
-    <input type="text" [(ngModel)]="name">
-    <p>Description</p>
-    <input type="text" [(ngModel)]="description">
-    <p>Address</p>
-    <input type="text" [(ngModel)]="address">
-    <p>City</p>
-    <input type="text" [(ngModel)]="city">
-    <p>State</p>
-    <input type="text" [(ngModel)]="state">
-    <p>Price</p>
-    <input type="number" [(ngModel)]="ticketPrice">
-    <p>Category</p>
-    <input type="text" [(ngModel)]="type">
-    <p>Host</p>
-    <input type="text" [(ngModel)]="hostedBy">
-    <p>Date&Time</p>
-    <input type="datetime" [(ngModel)]="dateTime">
-    <p>Tickets Left</p>
-    <input type="number" [(ngModel)]="availableTickets">
+<hr>
+    <div>
+        <label>Name</label><br>
+        <input type="text" [(ngModel)]="name">
+    </div>
+    <div>
+        <label>Description</label><br>
+        <input type="text" [(ngModel)]="description">
+    </div>
+    <div>
+        <label>Address</label><br>
+        <input type="text" [(ngModel)]="address">
+    </div>
+    <div>
+        <label>City</label><br>
+        <input type="text" [(ngModel)]="city">
+    </div>
+    <div>
+        <label>State</label><br>
+        <input type="text" [(ngModel)]="state" maxlength="2">
+    </div>
+    <br>
+    <div>
+        <label>Price</label><br>
+        <input type="text" [(ngModel)]="ticketPrice">
+    </div>
+    <div>
+        <label>Category</label><br>
+        <select [(ngModel)]="type">
+            <option value="Family">Family</option>
+            <option value="Religious">Religious</option>
+            <option value="Concert">Concert</option>
+        </select>
+    </div>
+    <div>
+        <label>Host</label><br>
+        <input type="text" [(ngModel)]="hostedBy">
+    </div>
+    <div>
+        <label>Date&Time</label><br>
+        <input type="datetime-local" [(ngModel)]="dateTime">
+    </div>
+    <div>
+        <label>Tickets Left</label><br>
+        <input type="text" [(ngModel)]="availableTickets">
+    </div>
     <button (click)="AddEvent(name,description,address,city,state,ticketPrice,type,hostedBy,dateTime,availableTickets)">Submit</button>
 
+</div>

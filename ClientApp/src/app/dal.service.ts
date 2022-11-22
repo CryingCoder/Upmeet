@@ -5,13 +5,16 @@ import { catchError, Observable, throwError,  } from 'rxjs';
 import { inject } from '@angular/core/testing';
 import { Fav } from './fav';
 import { evntDTO } from './evntDTO';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DALService {
   baseUrl:string = "";
-  constructor(private http:HttpClient, @Inject("BASE_URL") private url:string) { 
+  constructor(private http:HttpClient, 
+    @Inject("BASE_URL") private url:string,
+    public router:Router) { 
     this.baseUrl = url;
   }
   // Getting events
@@ -52,8 +55,10 @@ export class DALService {
     console.log(name);
     let newEvent:evntDTO = {name:name,description:description,address:address,city:city,state:state,
       ticketPrice:ticketPrice,type:type,hostedBy:hostedBy,dateTime:dateTime,availableTickets:availableTickets};
-      this.http.post<evntDTO>(this.baseUrl + "api/Events", newEvent).subscribe(data => {});
+      this.http.post<evntDTO>(this.baseUrl + "api/Events", newEvent).subscribe(data => {
+      });
       console.log("Yo true");
+      this.router.navigate(['/']);
   }
 
 }

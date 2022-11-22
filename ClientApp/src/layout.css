@@ -80,3 +80,11 @@ footer {
     padding: 20px 6px 6px 0px;
     text-align: right;
 }
+
+.addForm input {
+    break-after: always;
+}
+.addForm div {
+    display: inline-block;
+    padding-right: 12px;
+}
