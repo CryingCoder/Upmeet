@@ -22,5 +22,8 @@ export class UserService {
 	public clearData() {
 		localStorage.clear();
 	}
-	// i forgot lmao
+	userChange(id:string){
+		console.log("trying to save id: "+id)
+		this.saveData("userID", `${id}`);
+	  }
 }

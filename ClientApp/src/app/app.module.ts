@@ -15,6 +15,7 @@ import { SearchPageComponent } from './search-page/search-page.component';
 import { FormatterService } from './formatter.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AddEventComponent } from './add-event/add-event.component';
+import { UserDropdownComponent } from './user-dropdown/user-dropdown.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,9 @@ import { AddEventComponent } from './add-event/add-event.component';
     LocationComponent,
     SearchComponent,
     SearchPageComponent,
+    UserDropdownComponent,
+    AddEventComponent,
+    
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

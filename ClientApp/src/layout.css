@@ -13,6 +13,8 @@
     font-size: 72px;
     font-weight: 600;
     text-shadow: 3px 3px black;
+    margin-left: 5px;
+    margin-right: 5px;
   }
 
 .eventCard{
