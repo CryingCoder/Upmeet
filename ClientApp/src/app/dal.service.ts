@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, throwError,  } from 'rxjs';
 import { inject } from '@angular/core/testing';
 import { Fav } from './fav';
+import { evntDTO } from './evntDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +47,13 @@ export class DALService {
 
   }
 
-  //
+  //adding events
+  AddEvent(name:string,description:string,address:string,city:string,state:string,ticketPrice:number,type:string,hostedBy:string,dateTime:string,availableTickets:number):void{
+    console.log(name);
+    let newEvent:evntDTO = {name:name,description:description,address:address,city:city,state:state,
+      ticketPrice:ticketPrice,type:type,hostedBy:hostedBy,dateTime:dateTime,availableTickets:availableTickets};
+      this.http.post<evntDTO>(this.baseUrl + "api/Events", newEvent).subscribe(data => {});
+      console.log("Yo true");
+  }
 
 }

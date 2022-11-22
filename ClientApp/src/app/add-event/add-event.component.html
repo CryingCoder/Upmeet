@@ -1,1 +1,25 @@
-<p>add-event works!</p>
+<h2>Add New Event to the Event List!</h2>
+
+
+    <p>Name</p>
+    <input type="text" [(ngModel)]="name">
+    <p>Description</p>
+    <input type="text" [(ngModel)]="description">
+    <p>Address</p>
+    <input type="text" [(ngModel)]="address">
+    <p>City</p>
+    <input type="text" [(ngModel)]="city">
+    <p>State</p>
+    <input type="text" [(ngModel)]="state">
+    <p>Price</p>
+    <input type="number" [(ngModel)]="ticketPrice">
+    <p>Category</p>
+    <input type="text" [(ngModel)]="type">
+    <p>Host</p>
+    <input type="text" [(ngModel)]="hostedBy">
+    <p>Date&Time</p>
+    <input type="datetime" [(ngModel)]="dateTime">
+    <p>Tickets Left</p>
+    <input type="number" [(ngModel)]="availableTickets">
+    <button (click)="AddEvent(name,description,address,city,state,ticketPrice,type,hostedBy,dateTime,availableTickets)">Submit</button>
+
