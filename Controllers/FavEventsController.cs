@@ -86,16 +86,19 @@ namespace Upmeet.Controllers
         }
 
         // DELETE: api/FavEvents/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteFavEvent(int id)
+        [HttpDelete("{eventid}/{user}")]
+        public async Task<IActionResult> DeleteFavEvent(int eventid, int user)
         {
-            var favEvent = await _context.FavEvents.FindAsync(id);
+            var favEvent = await _context.FavEvents.ToListAsync();
+            //var favEvent = await _context.FavEvents.ToListAsync();
+            var newFav = favEvent.Where(x => x.EventId == eventid && x.UserId == user).First();
+            Console.WriteLine(favEvent[0]);
             if (favEvent == null)
             {
                 return NotFound();
             }
 
-            _context.FavEvents.Remove(favEvent);
+            _context.FavEvents.Remove(newFav);
             await _context.SaveChangesAsync();
 
             return NoContent();

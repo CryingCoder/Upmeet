@@ -16,6 +16,7 @@ export class EventComponent implements OnInit {
   private routeSub: Subscription;
   loggedIn:number = -1;
   faStar = faStar;
+  isFavorited = false;
 
   constructor(private eventDB:DALService, 
     public fmtr:FormatterService, 
@@ -47,6 +48,7 @@ export class EventComponent implements OnInit {
       this.eventDB.isFavByUser(this.currentEvent.id, this.loggedIn).subscribe((results)=> {
         if(results[0].userId == this.loggedIn){
           this.favUpdate();
+          this.isFavorited = true;
         }   
         });
       });
@@ -56,15 +58,27 @@ export class EventComponent implements OnInit {
     header.style.backgroundImage = dynamicCss;
    }
   
+
   favorite(eventID:number, user:number):void{
-    this.eventDB.makeFavorite(eventID, user)
-    .subscribe(result => {
-      if(result.userId === this.loggedIn){
+    console.log("hey");
+    if (this.isFavorited === false) {      
+      this.eventDB.makeFavorite(eventID, user)
+      .subscribe(result => {
+        if(result.userId === this.loggedIn){
         this.favUpdate();
       }else{
         alert("error!");
       }
     });
+    }
+    else
+    {
+      console.log("Yo");
+      this.isFavorited = false;
+      this.eventDB.RmvEvent(eventID, user);
+      document.getElementById('star')!.style.color = `black`;
+    }
+    
   }
 
   favUpdate(){
