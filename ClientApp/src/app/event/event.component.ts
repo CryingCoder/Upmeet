@@ -27,11 +27,14 @@ export class EventComponent implements OnInit {
     });
 
 
+
   }
 
 
   currentEvent:Evnt = {} as Evnt;
    
+  dynamicCss:string = `url('/assets/${this.currentEvent.id}.jpg') !important`;
+
    ngOnInit(): void {
 
     // userID
@@ -40,22 +43,23 @@ export class EventComponent implements OnInit {
     }
     this.loggedIn = parseInt(this.userServ.getData("userID")!);
     console.log("user id: "+this.loggedIn);
+// get this event
+this.eventDB.GetCertainEvent(this.cEventID).subscribe((results:Evnt)=> {
+  this.currentEvent = results;
+  // check if event if fav'd by user we got
+  this.eventDB.isFavByUser(this.currentEvent.id, this.loggedIn).subscribe((results)=> {
+    if(results[0].userId == this.loggedIn){
+      this.favUpdate();
+      this.isFavorited = true;
+    }   
+    });
+  });
+  // these are SUPPOSED to set the header to the picture but it isnt loading until too late like the event fav was 
+  let header:HTMLElement  =  document.getElementById(`HSE`)!;
 
-    // get this event
-    this.eventDB.GetCertainEvent(this.cEventID).subscribe((results:Evnt)=> {
-      this.currentEvent = results;
-      // check if event if fav'd by user we got
-      this.eventDB.isFavByUser(this.currentEvent.id, this.loggedIn).subscribe((results)=> {
-        if(results[0].userId == this.loggedIn){
-          this.favUpdate();
-          this.isFavorited = true;
-        }   
-        });
-      });
-      // these are SUPPOSED to set the header to the picture but it isnt loading until too late like the event fav was 
-      let header:HTMLElement  =  document.getElementById(`HSE`)!;
-    let dynamicCss:string = `url('/assets/${this.currentEvent.id}.jpg') !important`;
-    header.style.backgroundImage = dynamicCss;
+ header.style.backgroundImage = this.dynamicCss;
+
+    
    }
   
 
@@ -66,6 +70,7 @@ export class EventComponent implements OnInit {
       .subscribe(result => {
         if(result.userId === this.loggedIn){
         this.favUpdate();
+        this.isFavorited = true;
       }else{
         alert("error!");
       }

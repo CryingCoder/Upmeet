@@ -16,7 +16,6 @@
 							<p class="divider">&nbsp;|&nbsp;</p>
 							<a [routerLink]="['location', e.state, e.city]"> {{e.city}}, {{e.state}}</a>
 						</span>
-						<br>
 						<span>
 							<div *ngIf="e.type === 'Religious'; else elseBlock">
 								<p><fa-icon [icon]="faSpaghettiMonsterFlying"></fa-icon>{{e.type}} Event by {{e.hostedBy}} on {{fmtr.dateFormatter(e.dateTime)}}</p>
