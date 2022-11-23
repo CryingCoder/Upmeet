@@ -26,6 +26,10 @@ export class DALService {
     return this.http.get<Evnt>(this.baseUrl+`api/Events/${id}`);
   }
 
+  SearchForEvent(searchString:string):Observable<Evnt[]>{
+    return this.http.get<Evnt[]>(this.baseUrl+`api/Events/${searchString}`);
+  }
+
   //favoriting events
   isFavByUser(id:number, user:number):Observable<Fav[]>{
     let output:boolean = false;

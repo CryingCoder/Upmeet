@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { DALService } from '../dal.service';
 import { Evnt } from '../evnt';
 import { Fav } from '../fav';
@@ -14,7 +15,10 @@ export class MyFavsComponent {
   resultList:Evnt[] = [];
   loggedIn:number = -1;
     
-  constructor(public fmtr:FormatterService, private userServ:UserService, private eventDB:DALService){
+  constructor(public fmtr:FormatterService, 
+    private userServ:UserService, 
+    private eventDB:DALService,
+    private router:Router){
 
   }
 
@@ -46,5 +50,11 @@ export class MyFavsComponent {
       });
     });
   }
+
+  search(searchString:string){
+    this.router.navigate([`/search-page/${searchString}`]);
+  }
+
+
 }
 
