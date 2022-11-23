@@ -123,3 +123,7 @@ button {
 .pushDown {
     margin-top: 4px;
 }
+
+.addEventbtn {
+    font-size: 20px;
+}
