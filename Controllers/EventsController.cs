@@ -51,17 +51,20 @@ namespace Upmeet.Controllers
             var Results2 = allEvents.Where(x => x.Description.ToLower().Contains(searchQuery.ToLower())).ToList();
             var Results3 = allEvents.Where(x => x.HostedBy.ToLower().Contains(searchQuery.ToLower())).ToList();
             var Results4 = allEvents.Where(x => x.Type.ToLower().Contains(searchQuery.ToLower())).ToList();
-            List<Event> output = searchResults.Union(Results2).ToList();
+
+			var cityEvents = allEvents.Where(x => x.City.ToLower().Contains(searchQuery.ToLower())).ToList();
+			var stateEvents = allEvents.Where(x => x.State.ToLower().Contains(searchQuery.ToLower())).ToList();
+			List<Event> output = searchResults.Union(Results2).ToList();
             List<Event> out2 = output.Union(Results3).ToList();
             List<Event> out3 = out2.Union(Results4).ToList();
-            
-            
-            if (out3 == null)
+			List<Event> out4 = out3.Union(cityEvents).ToList();
+			List<Event> out5 = out4.Union(stateEvents).ToList();
+			if (out5 == null)
             {
                 return (IEnumerable<Event>)NotFound();
             }
 
-            return out3;
+            return out5;
         }
 
         // PUT: api/Events/5

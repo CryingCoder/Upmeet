@@ -1,6 +1,7 @@
 <div class="container addForm">
-<h2>Add New Event to the Event List!</h2>
-<hr>
+    <br>
+    <h3>What's the occasion?</h3>
+    <hr>
     <div>
         <label>Name</label><br>
         <input type="text" [(ngModel)]="name">
@@ -9,6 +10,9 @@
         <label>Description</label><br>
         <input type="text" [(ngModel)]="description">
     </div>
+    <br>
+    <h3>Where is it at?</h3>
+    <hr>
     <div>
         <label>Address</label><br>
         <input type="text" [(ngModel)]="address">
@@ -22,6 +26,8 @@
         <input type="text" [(ngModel)]="state" maxlength="2">
     </div>
     <br>
+    <h3>Some more details, please :)</h3>
+    <hr>
     <div>
         <label>Price</label><br>
         <input type="text" [(ngModel)]="ticketPrice">
@@ -46,6 +52,6 @@
         <label>Tickets Left</label><br>
         <input type="text" [(ngModel)]="availableTickets">
     </div>
-    <button (click)="AddEvent(name,description,address,city,state,ticketPrice,type,hostedBy,dateTime,availableTickets)">Submit</button>
+    <button class="addEventbtn" (click)="AddEvent(name,description,address,city,state,ticketPrice,type,hostedBy,dateTime,availableTickets)">Submit</button>
 
 </div>

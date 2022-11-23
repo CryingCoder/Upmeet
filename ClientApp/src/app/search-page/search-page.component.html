@@ -1,16 +1,18 @@
 <div class="container">
+<br>
 <app-search class="onSearchPage"></app-search>
 <h1>Searching for {{searchQuery}}</h1>
+	<hr>
     <div class="row">
         <div class="col-md-12">
             <div *ngFor="let e of resultList">
 				<div class="eventCard">
 					<img src="/assets/{{e.id}}.jpg" width="150">
-					<div class="eventContents"> 
+					<div class="eventContents secondSpan"> 
 						<span style="display:flex">
 							<a [routerLink]="['event',e.id]" class="eventCardTitle">{{e.name}}</a>
 							<p class="divider">&nbsp;|&nbsp;</p>
-							<a [routerLink]="['location', e.state, e.city]"> {{e.city}}, {{e.state}}</a>
+							<a [routerLink]="['../../search-page', e.city]" class="pushDown"> {{e.city}}, {{e.state}}</a>
 						</span>
 						<br>
 						<span>

@@ -1,18 +1,20 @@
 <div class="container">
+    <br>
     <app-search class="onSearchPage"></app-search>
-    <h1>Searching for my favs!</h1>
+    <h1>my favs!</h1>
+    <hr>
         <div class="row">
             <div class="col-md-12">
                 <div *ngFor="let e of resultList; index as i">
                     <div class="eventCard" id="event{{e.id}}">
                         <img src="/assets/{{e.id}}.jpg" width="150">
-                        <div class="eventContents"> 
+                        <div class="eventContents secondSpan"> 
                             <span style="display:flex">
                                 <a [routerLink]="['event',e.id]" class="eventCardTitle">{{e.name}}</a>
                                 <p class="divider">&nbsp;|&nbsp;</p>
-                                <a [routerLink]="['location', e.state, e.city]"> {{e.city}}, {{e.state}}</a>
+                                <a [routerLink]="['../search-page', e.city]" class="pushDown"> {{e.city}}, {{e.state}}</a>
                             </span>
-                            <span>
+                            <span >
                                 <p>{{e.type}} Event by {{e.hostedBy}} on {{fmtr.dateFormatter(e.dateTime)}}</p>
                                 <button (click)="RmvFav(e.id,loggedIn)" (click)="rmvLocal(i)" id="remove{{e.id}}">Remove from favorites</button>
                             </span>

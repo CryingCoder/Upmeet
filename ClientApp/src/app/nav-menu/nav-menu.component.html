@@ -20,13 +20,6 @@
         [ngClass]="{ show: isExpanded }"
       >
         <ul class="navbar-nav flex-grow">
-          <li
-            class="nav-item"
-            [routerLinkActive]="['link-active']"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
-          </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/add-event']">Add Event</a>
           </li>
@@ -34,12 +27,9 @@
             <a class="nav-link text-dark" [routerLink]="['/my-favs']">My Favs</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/search-page']">Spec. Search</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
             <app-user-dropdown></app-user-dropdown>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
+          <li class="nav-item navSearchBar" [routerLinkActive]="['link-active']">
             <app-search></app-search>
           </li>
         </ul>

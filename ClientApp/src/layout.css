@@ -48,6 +48,7 @@
     .nav-item button {
         width: 28px;
     }
+    
 }
 @media (min-width: 768px){
     .nav-item input {
@@ -71,6 +72,10 @@
 }
 
 
+.onSearchPage button::after {
+    content:"earch!";
+}
+
 .onSearchPage > input::after {
     content:"earch!";
     width:80%;
@@ -83,8 +88,38 @@ footer {
 
 .addForm input {
     break-after: always;
+    
 }
 .addForm div {
     display: inline-block;
     padding-right: 12px;
+    padding-bottom: 20px;
+}
+
+.addForm h3{
+    padding-bottom: 0px;
+}
+
+button {
+    border-radius: 3px;
+    border:0.16em solid #FFFFFF;
+    background: #d7d7d7;
+}
+.userTag {
+    margin-bottom: 0;
+    padding-right: 2px;
+}
+.userDrop{
+    display: inline-flex;
+    padding-top: 8px;
+}
+
+.navSearchBar {
+    padding: 6px 0px 0px 5px;
+}
+.secondSpan p {
+    margin-bottom: 0rem;
+}
+.pushDown {
+    margin-top: 4px;
 }

@@ -12,11 +12,11 @@
 			<div *ngFor="let e of workingList">
 				<div class="eventCard" *ngIf="e">
 					<img src="/assets/{{e.id}}.jpg" width="150">
-					<div class="eventContents"> 
+					<div class="eventContents secondSpan"> 
 						<span style="display:flex">
-							<a [routerLink]="['event',e.id]" class="eventCardTitle">{{e.name}}</a>
+							<a [routerLink]="['event', e.id]" class="eventCardTitle">{{e.name}}</a>
 							<p class="divider">&nbsp;|&nbsp;</p>
-							<a [routerLink]="['location', e.state, e.city]"> {{e.city}}, {{e.state}}</a>
+							<a [routerLink]="['search-page', e.city]" class="pushDown"> {{e.city}}, {{e.state}}</a>
 						</span>
 						<span>
 							<div *ngIf="e.type === 'Religious'; else elseBlock">

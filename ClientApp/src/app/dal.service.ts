@@ -68,7 +68,7 @@ export class DALService {
       this.router.navigate(['/']);
   }
 
-  //Removing bitches
+  //Removing favs
   RmvEvent(eventId:number,userId:number):void{
     let rmvEvent:Fav = {eventId:eventId,userId:userId}
     this.http.delete<Fav>(this.baseUrl + `api/FavEvents/${eventId}/${userId}`).subscribe(data => {
