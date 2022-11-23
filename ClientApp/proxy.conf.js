@@ -10,6 +10,7 @@ const PROXY_CONFIG = [
       "/api/Events",
       "/api/EventSearch",
       "/api/FavEvents",
+      "/api/Events/search",
    ],
     target: target,
     secure: false,

@@ -41,6 +41,29 @@ namespace Upmeet.Controllers
             return @event;
         }
 
+        [HttpGet("search/{searchQuery}")]
+        public async Task<IEnumerable<Event>> SearchEvents(string searchQuery)
+        {
+            Console.WriteLine(searchQuery);
+            var allEvents = await _context.Events.ToListAsync();
+            Console.WriteLine(allEvents[0].Name);
+            var searchResults = allEvents.Where(x => x.Name.ToLower().Contains(searchQuery.ToLower())).ToList();
+            var Results2 = allEvents.Where(x => x.Description.ToLower().Contains(searchQuery.ToLower())).ToList();
+            var Results3 = allEvents.Where(x => x.HostedBy.ToLower().Contains(searchQuery.ToLower())).ToList();
+            var Results4 = allEvents.Where(x => x.Type.ToLower().Contains(searchQuery.ToLower())).ToList();
+            List<Event> output = searchResults.Union(Results2).ToList();
+            List<Event> out2 = output.Union(Results3).ToList();
+            List<Event> out3 = out2.Union(Results4).ToList();
+            
+            
+            if (out3 == null)
+            {
+                return (IEnumerable<Event>)NotFound();
+            }
+
+            return out3;
+        }
+
         // PUT: api/Events/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

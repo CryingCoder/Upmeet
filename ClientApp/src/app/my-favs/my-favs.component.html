@@ -3,8 +3,8 @@
     <h1>Searching for my favs!</h1>
         <div class="row">
             <div class="col-md-12">
-                <div *ngFor="let e of resultList">
-                    <div class="eventCard">
+                <div *ngFor="let e of resultList; index as i">
+                    <div class="eventCard" id="event{{e.id}}">
                         <img src="/assets/{{e.id}}.jpg" width="150">
                         <div class="eventContents"> 
                             <span style="display:flex">
@@ -14,6 +14,7 @@
                             </span>
                             <span>
                                 <p>{{e.type}} Event by {{e.hostedBy}} on {{fmtr.dateFormatter(e.dateTime)}}</p>
+                                <button (click)="RmvFav(e.id,loggedIn)" (click)="rmvLocal(i)" id="remove{{e.id}}">Remove from favorites</button>
                             </span>
                         </div>
                     </div>

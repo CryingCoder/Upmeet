@@ -18,32 +18,23 @@ export class SearchComponent implements OnInit {
   searchString:string = "";
 
   searchQuery:string = "";
-  private routeSub: Subscription;
 
 
-  constructor(private router: Router,
-    private userServ:UserService, 
-    private fmtr:FormatterService,
-    private eventDB:DALService,
-    private route: ActivatedRoute) {
-      this.routeSub = route.params.subscribe(params => {
-        this.searchQuery = params['id'];
-      });
+
+  constructor(private router: Router) {
+      
      }
 
   ngOnInit(): void {
-    if (this.userServ.getData("userID") == ""){
-      this.userServ.userChange("1");
-    }
-    this.loggedIn = parseInt(this.userServ.getData("userID")!); 
-
-    this.eventDB.SearchForEvent(this.searchQuery).subscribe((results:Evnt[])=> {
-
-    });
+    
 
   }
 
   search(searchString:string){
     this.router.navigate([`/search-page/${searchString}`]);
+    setTimeout(()=>{
+      window.location.reload();
+    }, 100);
+
   }
 }

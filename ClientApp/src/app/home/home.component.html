@@ -1,3 +1,4 @@
+
 <div class="homeSplash">
 	<h1>What're you doing this weekend?</h1>
 </div>
@@ -7,8 +8,9 @@
 		<div class="col-md-9">
 			<h3>Recent Events!</h3>
 			<hr>
+			<div *ngIf="workingList.length !== 0">
 			<div *ngFor="let e of workingList">
-				<div class="eventCard">
+				<div class="eventCard" *ngIf="e">
 					<img src="/assets/{{e.id}}.jpg" width="150">
 					<div class="eventContents"> 
 						<span style="display:flex">
@@ -28,14 +30,16 @@
 				</div>
 				<hr>
 			</div>
+			</div>
     	</div>
     	<div class="col-md-3">
 			<h3>Popular Catagories</h3>
 			<hr>
 			<ul>
-				<li>Detroit Events</li>
-				<li>Social Events</li>
-				<li>Scary Events</li>
+				<li><a [routerLink]="['search-page', 'detroit']">Detroit Events</a></li>
+				<li><a [routerLink]="['search-page', 'social']">Social Events</a></li>
+				<li><a [routerLink]="['search-page', 'religious']">Religious Events</a></li>
+				<li><a [routerLink]="['search-page', 'concert']">Concerts</a></li>
 			</ul>
     	</div>
 	</div>

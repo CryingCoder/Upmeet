@@ -55,6 +55,18 @@ export class MyFavsComponent {
     this.router.navigate([`/search-page/${searchString}`]);
   }
 
+  remvstr:string = "";
+
+  RmvFav(eventID:number,user:number){
+    this.eventDB.RmvEvent(eventID, user);
+    this.remvstr = `event + ${eventID}`;
+    document.getElementById(this.remvstr)?.remove();
+  }
+
+  rmvLocal(i:number){
+    this.resultList.splice(i, 1);
+  }
+
 
 }
 

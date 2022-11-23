@@ -44,7 +44,7 @@ import { MyFavsComponent } from './my-favs/my-favs.component';
       { path: 'location/:state/', component: LocationComponent },
       { path: 'location/:state/:city', component: LocationComponent },
       { path: 'search-page/:searchString', component: SearchPageComponent },
-      { path: 'search-page/:favoritesOf', component: SearchPageComponent },
+      { path: 'search-page', component: SearchPageComponent },
       { path: 'my-favs', component: MyFavsComponent },
     ]),
     FontAwesomeModule
